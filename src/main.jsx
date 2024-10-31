@@ -7,6 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Progress from './components/Progress/Progress.jsx';
+import Structure from './components/Structure/Structure.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "/progress",
         element: <Progress />
+      },
+      {
+        path: "/structure",
+        element: <Structure />
       },
     ]
   },
