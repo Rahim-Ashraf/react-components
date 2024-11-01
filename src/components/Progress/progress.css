@@ -1,0 +1,14 @@
+
+.progress {
+    height: 20px;
+    border-radius: 4px;
+    overflow: hidden; /* To ensure inner bar respects border-radius */
+  }
+  
+  .progress::-webkit-progress-bar {
+    background-color: rgb(222, 222, 222);
+  }
+  
+  .progress::-webkit-progress-value {
+    background-color: rgb(30 58 138);
+  }
