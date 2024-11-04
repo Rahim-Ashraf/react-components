@@ -33,7 +33,6 @@ const projects = [
     endDate: "15-04-23",
     progress: 95
   },
-
 ]
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December",];
@@ -99,7 +98,7 @@ export default function Progress() {
           <BiSolidBarChartSquare className="text-2xl" />
         </div>
       </div>
-      <div className="border rounded-2xl">
+      <div className="border rounded-2xl overflow-x-scroll">
         <div className="grid grid-cols-10">
           <div className="flex col-span-1">
             <div className="border-r px-4 pt-4 pb-6 space-y-6">
