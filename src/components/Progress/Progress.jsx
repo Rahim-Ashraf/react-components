@@ -35,6 +35,7 @@ const projects = [
   },
 
 ]
+
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December",];
 const parseDate = (dateStr) => {
   const [day, month, year] = dateStr.split('-').map(Number);
@@ -42,19 +43,37 @@ const parseDate = (dateStr) => {
 };
 
 export default function Progress() {
+
   const minMonth = Math.min(...projects.map(project => parseInt(project.startDate.slice(3, 5))));
   const maxMonth = Math.max(...projects.map(project => parseInt(project.endDate.slice(3, 5))));
 
   const startMonth = new Date(2023, minMonth, 1);
   const endMonth = new Date(2023, maxMonth, 30);
-
   const totalDays = Math.ceil((endMonth - startMonth) / (1000 * 60 * 60 * 24));
-  const totalWeeks = Math.floor(totalDays / 7);
-  console.log(totalDays, totalWeeks)
 
+  // fuction for getting total weeks for every months
+  const weeksPerMonth = (days, months) => {
+    let daysLeft = days - 28;
+    const weeksInMonth = [4];
+    for (let i = months - 1; i > 0; i--) {
+      if (daysLeft < 0) {
+        break;
+      }
+      if ((daysLeft - 35) / (i - 1) >= 30) {
+        weeksInMonth.push(5);
+        daysLeft -= 35;
+      }
+      else {
+        weeksInMonth.push(4);
+        daysLeft -= 28;
+      }
+    }
+    return weeksInMonth;
+  }
+
+  // fuction for progress bar style
   const progressOuterStyle = (startDate, endDate) => {
     const projectStart = parseDate(startDate);
-    console.log(projectStart)
     const projectEnd = parseDate(endDate);
     const startOffset = Math.ceil((projectStart - startMonth) / (1000 * 60 * 60 * 24));
     const projectDuration = Math.ceil((projectEnd - projectStart) / (1000 * 60 * 60 * 24));
@@ -64,11 +83,10 @@ export default function Progress() {
       left: `${(startOffset / totalDays) * 100}%`,
       width: `${(projectDuration / totalDays) * 100}%`,
     };
-  };
-
+  }
 
   return (
-    <div className="max-w-[1920px] min-w-[1440px] mx-auto p-4 rounded-2xl border bg-white">
+    <div className="max-w-[1920px] min-w-[1620px] mx-auto p-4 rounded-2xl border bg-white">
       <div className="flex justify-between pb-8">
         <div>
           <h1 className="text-2xl font-bold">Objectives</h1>
@@ -105,12 +123,14 @@ export default function Progress() {
             </div>
             <div className="h-5/6 relative">
               <div className="flex justify-between h-full">
-                {
-                  Array(totalWeeks).fill().map((_, idx) => <p key={idx} className="border-l p-1 w-full">{idx + 1}</p>)
-                }
+                {/* show weeks for evrery month */}
+                {weeksPerMonth(totalDays, Math.round(totalDays / 30))?.map(monthWeeks => {
+                  return Array(monthWeeks).fill().map((_, idx) => <p key={idx} className="border-l p-1 w-full">w{idx + 1}</p>)
+                })}
               </div>
               <div className="absolute top-0 w-full h-full pt-14">
                 <div className="h-full w-full">
+                  {/* progress bars */}
                   {projects.map((project, idx) => (
                     <div key={idx} className="h-1/5">
                       <div className="w-full h-full relative">
@@ -126,7 +146,6 @@ export default function Progress() {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   )
