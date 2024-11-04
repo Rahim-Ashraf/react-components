@@ -68,7 +68,7 @@ export default function Progress() {
 
 
   return (
-    <div className="p-8 rounded-2xl border-2 bg-white">
+    <div className="max-w-[1920px] min-w-[1440px] mx-auto p-4 rounded-2xl border bg-white">
       <div className="flex justify-between pb-8">
         <div>
           <h1 className="text-2xl font-bold">Objectives</h1>
@@ -82,13 +82,19 @@ export default function Progress() {
         </div>
       </div>
       <div className="border rounded-2xl">
-        <div className="flex items-center">
-          <div className="flex w-[12.5%]">
-            <span className="border-r p-4">#</span>
-            <h4 className="p-4">Name</h4>
+        <div className="grid grid-cols-10">
+          <div className="flex col-span-1">
+            <div className="border-r px-4 pt-4 pb-6 space-y-6">
+              <p className="mb-16">#</p>
+              {projects.map((project, idx) => <p key={idx} className="">{idx + 1}</p>)}
+            </div>
+            <div className="px-4 pt-4 pb-6 space-y-6">
+              <p className="mb-16">Name</p>
+              {projects.map((project, idx) => <p key={idx} className="">{project.projectName}</p>)}
+            </div>
           </div>
-          <div className="w-full p-4">
-            <div className="grid grid-cols-11 w-full">
+          <div className="col-span-9 h-full">
+            <div className="grid grid-cols-11 pt-4 pb-4 w-full">
               {
                 monthNames.map((month, idx) => {
                   if (idx + 1 >= minMonth && idx + 1 <= maxMonth) {
@@ -97,33 +103,30 @@ export default function Progress() {
                 })
               }
             </div>
-            <div className="flex justify-between">
-            {
-              Array(totalWeeks).fill().map((_, idx) => <p key={idx} className="border-l p-1">{idx+1}</p>)
-            }
-            </div>
-          </div>
-        </div>
-        {projects.map((project, idx) => (
-          <div key={idx} className="flex items-center">
-            <div className="flex w-[12.5%]">
-              <span className="border-r p-4">{idx + 1}</span>
-              <h4 className="p-4">{project.projectName}</h4>
-            </div>
-
-            <div className="w-full relative">
-            <div className="flex justify-between">
-            {
-              Array(totalWeeks).fill().map((_, idx) => <p key={idx} className="border-l px-1 h-full"> </p>)
-            }
-            </div>
-              <div style={progressOuterStyle(project.startDate, project.endDate)} className="flex gap-2 items-center" >
-                <progress className="progress w-full" value={project.progress} max="100"></progress>
-                <span>{project.progress}%</span>
+            <div className="h-5/6 relative">
+              <div className="flex justify-between h-full">
+                {
+                  Array(totalWeeks).fill().map((_, idx) => <p key={idx} className="border-l p-1 w-full">{idx + 1}</p>)
+                }
+              </div>
+              <div className="absolute top-0 w-full h-full pt-14">
+                <div className="h-full w-full">
+                  {projects.map((project, idx) => (
+                    <div key={idx} className="h-1/5">
+                      <div className="w-full h-full relative">
+                        <div style={progressOuterStyle(project.startDate, project.endDate)} className="flex gap-2 items-center" >
+                          <progress className="progress w-full" value={project.progress} max="100"></progress>
+                          <span>{project.progress}%</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        ))}
+        </div>
+
       </div>
     </div>
   )
