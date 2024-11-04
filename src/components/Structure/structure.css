@@ -1,0 +1,41 @@
+/* Main vertical line */
+.connector {
+    position: relative;
+    width: 2px; /* Thickness of the main line */
+    background-color: #4a4a4a; /* Color of the main line */
+    height: 300px; /* Height of the main line */
+    margin-left: 20px; /* Position of the line */
+}
+
+/* Curved connectors */
+.curve {
+    position: absolute;
+    width: 20px; /* Width of the curve */
+    height: 20px; /* Height of the curve */
+    background-color: transparent;
+}
+
+/* Pseudo-element to create the curve without borders */
+.curve::before {
+    content: "";
+    position: absolute;
+    width: 20px; /* Width of the curved edge */
+    height: 20px; /* Height of the curved edge */
+    border-radius: 0 0 50% 0; /* Rounded bottom-right corner */
+    background-color: #4a4a4a; /* Color of the curve */
+    top: 0;
+    left: -18px; /* Position the curve next to the main line */
+}
+
+/* Position each curve along the main line */
+.curve:nth-child(1) {
+    top: 20px;
+}
+
+.curve:nth-child(2) {
+    top: 100px;
+}
+
+.curve:nth-child(3) {
+    top: 180px;
+}
