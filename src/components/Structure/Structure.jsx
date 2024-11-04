@@ -53,8 +53,8 @@ const strategicThemes = [
                         score: "10 / 10",
                     },
                     {
-                        title: "Objective 2",
-                        progress: 70,
+                        title: "Objective 1",
+                        progress: 55,
                         score: "10 / 10",
                     },
                 ]
@@ -63,12 +63,20 @@ const strategicThemes = [
             {
                 title: "Business Goal 2",
                 progress: 25,
-                score: "10 / 10"
+                score: "10 / 10",
+                
             },
             {
                 title: "Business Goal 3",
                 progress: 45,
-                score: "10 / 10"
+                score: "10 / 10",
+                objectives: [
+                    {
+                        title: "Objective 1",
+                        progress: 55,
+                        score: "10 / 10",
+                    },
+                ]
             },
             {
                 title: "Business Goal 4",
@@ -150,24 +158,30 @@ export default function Structure() {
                                 <div className="absolute left-[99%] w-full">
                                     {businessGoalI.objectives?.map((objective, idx) => (
                                         <div key={idx} className="flex">
-                                            {idx === 0 ? <div className="grid grid-cols-2 w-24 -mt-12">
+                                            {businessGoalI.objectives.length === 1 ? <div className="grid grid-cols-2 w-24 -mt-12">
                                                 <div className="border-b border-black"></div>
                                                 <div className="border-b border-black -ml-[1px]"></div>
-                                                <div className="border-r border-t border-black rounded-tr-3xl"></div>
-                                                <div className="border-l border-t border-black rounded-tl-3xl -ml-[1px]"></div>
+                                                <div className=""></div>
+                                                <div className=""></div>
                                             </div> :
-                                                idx === businessGoalI.objectives.length - 1 ? <div className="grid grid-cols-2 w-24 -mt-12">
-                                                    <div className=""></div>
-                                                    <div className="border-b border-l border-black rounded-bl-3xl -ml-[1px]"></div>
-                                                    <div className=""></div>
-                                                    <div className=""></div>
+                                                idx === 0 ? <div className="grid grid-cols-2 w-24 -mt-12">
+                                                    <div className="border-b border-black"></div>
+                                                    <div className="border-b border-black -ml-[1px]"></div>
+                                                    <div className="border-r border-t border-black rounded-tr-3xl"></div>
+                                                    <div className="border-l border-t border-black rounded-tl-3xl -ml-[1px]"></div>
                                                 </div> :
-                                                    <div className="grid grid-cols-2 w-24 -mt-12">
-                                                        <div className="border-r border-black"></div>
-                                                        <div className="border-b border-l border-black rounded-bl-full -ml-[1px]"></div>
-                                                        <div className="border-r border-black"></div>
+                                                    idx === businessGoalI.objectives.length - 1 ? <div className="grid grid-cols-2 w-24 -mt-12">
                                                         <div className=""></div>
-                                                    </div>}
+                                                        <div className="border-b border-l border-black rounded-bl-3xl -ml-[1px]"></div>
+                                                        <div className=""></div>
+                                                        <div className=""></div>
+                                                    </div> :
+                                                        <div className="grid grid-cols-2 w-24 -mt-12">
+                                                            <div className="border-r border-black"></div>
+                                                            <div className="border-b border-l border-black rounded-bl-full -ml-[1px]"></div>
+                                                            <div className="border-r border-black"></div>
+                                                            <div className=""></div>
+                                                        </div>}
                                             <div className="pb-12">
                                                 <div className="h-max p-2 border border-slate-600 rounded-xl flex items-center gap-4">
                                                     <div>

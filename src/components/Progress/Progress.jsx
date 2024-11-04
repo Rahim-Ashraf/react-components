@@ -86,7 +86,7 @@ export default function Progress() {
   }
 
   return (
-    <div className="max-w-[1920px] min-w-[1620px] mx-auto p-4 rounded-2xl border bg-white">
+    <div className="max-w-[1920px] mx-auto p-4 rounded-2xl border bg-white">
       <div className="flex justify-between pb-8">
         <div>
           <h1 className="text-2xl font-bold">Objectives</h1>
