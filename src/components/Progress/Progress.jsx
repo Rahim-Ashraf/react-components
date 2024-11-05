@@ -4,41 +4,42 @@ import "./progress.css"
 
 const projects = [
   {
-    projectName: "Project 2",
-    startDate: "13-05-23",
-    endDate: "07-08-23",
-    progress: 35
+      projectName: "Project 1",
+      startDate: "20-10-23",
+      endDate: "10-12-23",
+      progress: 73
   },
   {
-    projectName: "Project 3",
-    startDate: "03-08-23",
-    endDate: "27-09-23",
-    progress: 82
+      projectName: "Project 2",
+      startDate: "13-05-23",
+      endDate: "07-08-23",
+      progress: 35
   },
   {
-    projectName: "Project 4",
-    startDate: "11-04-23",
-    endDate: "17-06-23",
-    progress: 61
+      projectName: "Project 3",
+      startDate: "03-08-23",
+      endDate: "27-09-23",
+      progress: 82
   },
   {
-    projectName: "Project 5",
-    startDate: "05-02-23",
-    endDate: "15-04-23",
-    progress: 95
+      projectName: "Project 3",
+      startDate: "03-01-23",
+      endDate: "27-02-23",
+      progress: 82
   },
   {
-    projectName: "Project 4",
-    startDate: "11-04-23",
-    endDate: "17-06-23",
-    progress: 61
+      projectName: "Project 4",
+      startDate: "11-04-23",
+      endDate: "17-06-23",
+      progress: 61
   },
   {
-    projectName: "Project 4",
-    startDate: "06-01-23",
-    endDate: "17-2-23",
-    progress: 61
+      projectName: "Project 5",
+      startDate: "05-02-23",
+      endDate: "15-04-23",
+      progress: 95
   },
+
 ]
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December",];
@@ -55,7 +56,7 @@ export default function Progress() {
   const startMonth = new Date(2023, minMonth, 1);
   const endMonth = new Date(2023, maxMonth, 30);
   const totalDays = Math.ceil((endMonth - startMonth) / (1000 * 60 * 60 * 24));
-console.log(startMonth,endMonth)
+  console.log(startMonth, endMonth)
   // fuction for getting total weeks for every months
   const weeksPerMonth = (days, months) => {
     let daysLeft = days - 28;
@@ -104,40 +105,45 @@ console.log(startMonth,endMonth)
           <BiSolidBarChartSquare className="text-2xl" />
         </div>
       </div>
-      <div className="border rounded-2xl overflow-x-scroll">
-        <div className="grid grid-cols-10 min-w-[1620px]">
-          <div className="flex col-span-1 border border-rose-500">
-            <div className="border-r px-4 pt-4 pb-6 space-y-6">
-              <p className="mb-16">#</p>
-              {projects.map((project, idx) => <p key={idx} className="">{idx + 1}</p>)}
+      {/* progress table start */}
+      <div className="overflow-x-scroll p-2">
+        <div className="border rounded-2xl min-w-[1680px]">
+          <div className="grid grid-cols-10">
+            <div className="flex col-span-1">
+              <div className="border-r p-4"><span className="mb-16">#</span></div>
+              <div className="w-1/2 p-4"><span className="mb-16">Name</span></div>
             </div>
-            <div className="px-4 pt-4 pb-6 space-y-6">
-              <p className="mb-16">Name</p>
-              {projects.map((project, idx) => <p key={idx} className="">{project.projectName}</p>)}
-            </div>
-          </div>
-          <div className="col-span-9 h-full">
-            <div className="flex justify-between pt-4 pb-4">
+            <div className="col-span-9 flex justify-between w-full">
               {
                 monthNames.map((month, idx) => {
                   if (idx + 1 >= minMonth && idx + 1 <= maxMonth) {
-                    return <div key={idx} className="w-full"><span>{month}</span></div>
+                    return <div key={idx} className="w-full py-4"><span>{month}</span></div>
                   }
                 })
               }
             </div>
-            <div className="relative h-full border border-rose-500">
+          </div>
+          <div className="grid grid-cols-10">
+            <div className="col-span-1 flex">
+              <div className="border-r px-4 pt-12 pb-6 space-y-6">
+                {projects.map((project, idx) => <p key={idx} className="">{idx + 1}</p>)}
+              </div>
+              <div className="px-4 pt-12 pb-6 space-y-6">
+                {projects.map((project, idx) => <p key={idx} className="">{project.projectName}</p>)}
+              </div>
+            </div>
+            <div className="col-span-9 relative h-full w-full">
               <div className="flex justify-between h-full">
                 {/* show weeks for evrery month */}
                 {weeksPerMonth(totalDays, Math.round(totalDays / 30))?.map(monthWeeks => {
-                  return Array(monthWeeks).fill().map((_, idx) => <p key={idx} className="border-l p-1 w-full">w{idx + 1}</p>)
+                  return Array(monthWeeks).fill().map((_, idx) => <p key={idx} className="border-l p-1 w-full text-center">w{idx + 1}</p>)
                 })}
               </div>
-              <div className="absolute top-0 w-full h-full pt-14">
+              <div className="absolute top-0 w-full h-full pt-12">
                 <div className="h-full w-full">
                   {/* progress bars */}
                   {projects.map((project, idx) => (
-                    <div key={idx} className="h-1/6">
+                    <div key={idx} className="pb-12">
                       <div className="w-full h-full relative">
                         <div style={progressOuterStyle(project.startDate, project.endDate)} className="flex gap-2 items-center" >
                           <progress className="progress w-full" value={project.progress} max="100"></progress>
@@ -152,6 +158,7 @@ console.log(startMonth,endMonth)
           </div>
         </div>
       </div>
+      {/* progress table end */}
     </div>
   )
 }
