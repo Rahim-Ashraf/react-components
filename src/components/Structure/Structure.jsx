@@ -70,6 +70,12 @@ const strategicThemes = [
                 title: "Business Goal 3",
                 progress: 45,
                 score: "10 / 10",
+                
+            },
+            {
+                title: "Business Goal 4",
+                progress: 75,
+                score: "10 / 10",
                 objectives: [
                     {
                         title: "Objective 1",
@@ -77,11 +83,6 @@ const strategicThemes = [
                         score: "10 / 10",
                     },
                 ]
-            },
-            {
-                title: "Business Goal 4",
-                progress: 75,
-                score: "10 / 10"
             },
         ]
 
@@ -142,7 +143,7 @@ export default function Structure() {
                                                 <div className="border-r border-black"></div>
                                                 <div className=""></div>
                                             </div>}
-                                    <div className="pb-12">
+                                    <div className="pb-12 w-80">
                                         <div className="h-max p-2 border border-slate-600 rounded-xl flex items-center gap-4">
                                             <div>
                                                 <p className={idx % 2 == 0 ? "p-2 rounded bg-yellow-50 text-yellow-400 font-semibold mb-2" :
@@ -155,18 +156,18 @@ export default function Structure() {
                                 </div>
 
                                 {/* design for objectives in businessGoal (if have any) */}
-                                <div className="absolute left-[99%] w-full">
+                                <div className="absolute left-[100%] w-full">
                                     {businessGoalI.objectives?.map((objective, idx) => (
                                         <div key={idx} className="flex">
                                             {businessGoalI.objectives.length === 1 ? <div className="grid grid-cols-2 w-24 -mt-12">
                                                 <div className="border-b border-black"></div>
-                                                <div className="border-b border-black -ml-[1px]"></div>
+                                                <div className="border-b border-black"></div>
                                                 <div className=""></div>
                                                 <div className=""></div>
                                             </div> :
                                                 idx === 0 ? <div className="grid grid-cols-2 w-24 -mt-12">
                                                     <div className="border-b border-black"></div>
-                                                    <div className="border-b border-black -ml-[1px]"></div>
+                                                    <div className="border-b border-black"></div>
                                                     <div className="border-r border-t border-black rounded-tr-3xl"></div>
                                                     <div className="border-l border-t border-black rounded-tl-3xl -ml-[1px]"></div>
                                                 </div> :
