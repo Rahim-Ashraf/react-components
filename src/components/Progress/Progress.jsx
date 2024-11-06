@@ -3,12 +3,7 @@ import { FaPause } from "react-icons/fa";
 import "./progress.css"
 
 const projects = [
-  {
-      projectName: "Project 1",
-      startDate: "20-10-23",
-      endDate: "10-12-23",
-      progress: 73
-  },
+ 
   {
       projectName: "Project 2",
       startDate: "13-05-23",
