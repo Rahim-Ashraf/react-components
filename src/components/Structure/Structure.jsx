@@ -65,11 +65,6 @@ const strategicThemes = [
                         progress: 55,
                         score: "10 / 10",
                     },
-                    {
-                        title: "Objective 1",
-                        progress: 55,
-                        score: "10 / 10",
-                    },
                 ]
 
             },
@@ -77,13 +72,50 @@ const strategicThemes = [
                 title: "Business Goal 2",
                 progress: 25,
                 score: "10 / 10",
-
+                objectives: [
+                    {
+                        title: "Objective 1",
+                        progress: 55,
+                        score: "10 / 10",
+                    },
+                    {
+                        title: "Objective 1",
+                        progress: 55,
+                        score: "10 / 10",
+                    },
+                    {
+                        title: "Objective 1",
+                        progress: 55,
+                        score: "10 / 10",
+                    },
+                ]
             },
             {
                 title: "Business Goal 3",
                 progress: 45,
                 score: "10 / 10",
-
+                objectives: [
+                    {
+                        title: "Objective 1",
+                        progress: 55,
+                        score: "10 / 10",
+                    },
+                    {
+                        title: "Objective 1",
+                        progress: 55,
+                        score: "10 / 10",
+                    },
+                    {
+                        title: "Objective 1",
+                        progress: 55,
+                        score: "10 / 10",
+                    },
+                    {
+                        title: "Objective 1",
+                        progress: 55,
+                        score: "10 / 10",
+                    },
+                ]
             },
             {
                 title: "Business Goal 4",
@@ -165,7 +197,7 @@ export default function Structure() {
                                                 <div className=""></div>
                                             </div>}
                                     <div className="pb-12 w-80">
-                                        <div className="h-max p-2 border border-slate-600 rounded-xl flex items-center gap-4" onMouseOver={() => showObjectives(goalId, themeId)} onMouseOut={() => setIsObjectivesVisible(false)}>
+                                        <div className="h-max p-2 border border-slate-600 rounded-xl flex items-center gap-4 cursor-pointer" onMouseOver={() => showObjectives(goalId, themeId)} onMouseOut={() => setIsObjectivesVisible(false)}>
                                             <div>
                                                 <p className={goalId % 2 == 0 ? "p-2 rounded bg-yellow-50 text-yellow-400 font-semibold mb-2" :
                                                     "p-2 rounded bg-green-50 text-green-600 font-semibold mb-2"}>{businessGoalI.score}</p>

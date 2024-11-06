@@ -46,6 +46,12 @@ const strategicThemes = [
                 title: "Business Goal 1",
                 progress: 82,
                 score: "10 / 10",
+
+            },
+            {
+                title: "Business Goal 2",
+                progress: 25,
+                score: "10 / 10",
                 objectives: [
                     {
                         title: "Objective 1",
@@ -58,19 +64,12 @@ const strategicThemes = [
                         score: "10 / 10",
                     },
                 ]
-
-            },
-            {
-                title: "Business Goal 2",
-                progress: 25,
-                score: "10 / 10",
-                
             },
             {
                 title: "Business Goal 3",
                 progress: 45,
                 score: "10 / 10",
-                
+
             },
             {
                 title: "Business Goal 4",
@@ -90,7 +89,7 @@ const strategicThemes = [
 
 ]
 
-export default function strategicTheme2() {
+export default function StrategicTheme2() {
 
     const averageScore = (goals) => {
         let totalScore = 0;
@@ -125,24 +124,38 @@ export default function strategicTheme2() {
 
                                 {/* design for businessGoal */}
                                 <div className="flex">
-                                    {idx === 0 ? <div className="grid grid-cols-2 w-24 -mt-12">
-                                        <div className="border-b border-black"></div>
-                                        <div className="border-b border-black -ml-[1px]"></div>
-                                        <div className="border-r border-t border-black rounded-tr-3xl"></div>
-                                        <div className=""></div>
+                                    {idx === 0 ? <div className="w-24">
+                                        <div className="flex h-14 border-b border-black">
+                                            <div className=""></div>
+                                            <div className="border-b border-black -ml-[1px]"></div>
+                                        </div>
+                                        <div className="flex w-full h-full">
+                                            <div className="border-r border-t w-full border-black rounded-tr-3xl"></div>
+                                            <div className="w-full"></div>
+                                        </div>
                                     </div> :
-                                        idx === theme.businessGoal.length - 1 ? <div className="grid grid-cols-2 w-24 -mt-12">
-                                            <div className=""></div>
-                                            <div className="border-b border-l border-black rounded-bl-3xl -ml-[1px]"></div>
-                                            <div className=""></div>
-                                            <div className=""></div>
-                                        </div> :
-                                            <div className="grid grid-cols-2 w-24 -mt-12">
-                                                <div className="border-r border-black"></div>
-                                                <div className="border-b border-l border-black rounded-bl-full -ml-[1px]"></div>
-                                                <div className="border-r border-black"></div>
-                                                <div className=""></div>
-                                            </div>}
+                                        idx === theme.businessGoal.length - 1 ? <div className="w-24">
+                                            <div className="flex h-14">
+                                                <div className="w-full"></div>
+                                                <div className="w-full border-b border-l border-black rounded-bl-3xl -ml-[1px]"></div>
+                                            </div>
+                                            <div className="flex w-full h-full">
+                                                <div className="w-full"></div>
+                                                <div className="w-full"></div>
+                                            </div>
+                                        </div>
+                                            :
+                                            <div className="w-24">
+                                                <div className="flex h-14">
+                                                    <div className="w-full border-r border-black"></div>
+                                                    <div className="w-full border-b border-l border-black rounded-bl-full -ml-[1px]"></div>
+                                                </div>
+                                                <div className="flex w-full h-full -mt-6">
+                                                    <div className="w-full"></div>
+                                                    <div className="w-full border-l border-black -ml-[1px]"></div>
+                                                </div>
+                                            </div>
+                                    }
                                     <div className="pb-12 w-80">
                                         <div className="h-max p-2 border border-slate-600 rounded-xl flex items-center gap-4">
                                             <div>
@@ -156,7 +169,7 @@ export default function strategicTheme2() {
                                 </div>
 
                                 {/* design for objectives in businessGoal (if have any) */}
-                                <div className="absolute left-[100%] w-full">
+                                <div>
                                     {businessGoalI.objectives?.map((objective, idx) => (
                                         <div key={idx} className="flex">
                                             {businessGoalI.objectives.length === 1 ? <div className="grid grid-cols-2 w-24 -mt-12">

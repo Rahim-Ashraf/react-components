@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Progress from './components/Progress/Progress.jsx';
 import Structure from './components/Structure/Structure.jsx';
+import StrategicTheme2 from './components/Structure/strategicTheme2.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/structure",
         element: <Structure />
+      },
+      {
+        path: "/strategic-theme2",
+        element: <StrategicTheme2 />
       },
     ]
   },

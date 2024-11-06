@@ -51,7 +51,7 @@ export default function Progress() {
   const startMonth = new Date(2023, minMonth, 1);
   const endMonth = new Date(2023, maxMonth, 30);
   const totalDays = Math.ceil((endMonth - startMonth) / (1000 * 60 * 60 * 24));
-  console.log(startMonth, endMonth)
+
   // fuction for getting total weeks for every months
   const weeksPerMonth = (days, months) => {
     let daysLeft = days - 28;
