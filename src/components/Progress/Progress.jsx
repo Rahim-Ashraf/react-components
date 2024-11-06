@@ -3,36 +3,36 @@ import { FaPause } from "react-icons/fa";
 import "./progress.css"
 
 const projects = [
- 
+
   {
-      projectName: "Project 2",
-      startDate: "13-05-23",
-      endDate: "07-08-23",
-      progress: 35
+    projectName: "Project 2",
+    startDate: "13-05-23",
+    endDate: "07-08-23",
+    progress: 35
   },
   {
-      projectName: "Project 3",
-      startDate: "03-08-23",
-      endDate: "27-09-23",
-      progress: 82
+    projectName: "Project 3",
+    startDate: "03-08-23",
+    endDate: "27-09-23",
+    progress: 82
   },
   {
-      projectName: "Project 3",
-      startDate: "03-01-23",
-      endDate: "27-02-23",
-      progress: 82
+    projectName: "Project 3",
+    startDate: "03-01-23",
+    endDate: "27-02-23",
+    progress: 82
   },
   {
-      projectName: "Project 4",
-      startDate: "11-04-23",
-      endDate: "17-06-23",
-      progress: 61
+    projectName: "Project 4",
+    startDate: "11-04-23",
+    endDate: "17-06-23",
+    progress: 61
   },
   {
-      projectName: "Project 5",
-      startDate: "05-02-23",
-      endDate: "15-04-23",
-      progress: 95
+    projectName: "Project 5",
+    startDate: "05-02-23",
+    endDate: "15-04-23",
+    progress: 95
   },
 
 ]
@@ -47,6 +47,7 @@ export default function Progress() {
 
   const minMonth = Math.min(...projects.map(project => parseInt(project.startDate.slice(3, 5))));
   const maxMonth = Math.max(...projects.map(project => parseInt(project.endDate.slice(3, 5))));
+  const totalMonths = 1 + maxMonth - minMonth;
 
   const startMonth = new Date(2023, minMonth, 1);
   const endMonth = new Date(2023, maxMonth, 30);
@@ -102,7 +103,7 @@ export default function Progress() {
       </div>
       {/* progress table start */}
       <div className="overflow-x-scroll p-2">
-        <div className="border rounded-2xl min-w-[1680px]">
+        <div className={`border rounded-2xl ${totalMonths<=6?'min-w-[1280px]':'min-w-[1680px]'}`}>
           <div className="grid grid-cols-10">
             <div className="flex col-span-1">
               <div className="border-r p-4"><span className="mb-16">#</span></div>
